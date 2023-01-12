@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-color: rgb(0, 30, 60);
 }
 input {
   border-radius: 8px;
@@ -22,10 +23,12 @@ button:hover {
 
 li {
   margin-right: 8px;
+  list-style: none;
+  color: #fff;
 }
 
 .input-area {
-  background-color: #293462;
+  background-color: #132f4c;
   width: 400px;
   height: 30px;
   padding: 8px;
@@ -34,7 +37,7 @@ li {
 }
 
 .incomplete-area {
-  background-color: #f24c4c;
+  background-color: #007fff;
   width: 400px;
   min-height: 200px;
   padding: 8px;
@@ -43,7 +46,7 @@ li {
 }
 
 .complete-area {
-  background-color: #ec9b3b;
+  background-color: #555a64;
   width: 400px;
   min-height: 200px;
   padding: 8px;

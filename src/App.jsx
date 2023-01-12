@@ -13,6 +13,29 @@ export const App = () => {
     setIncompleteTodos(newTodos);
     setTodoText("");
   };
+  const onClickDelete = (index) => {
+    const newTodos = [...incompleteTodos];
+    newTodos.splice(index, 1);
+    setIncompleteTodos(newTodos);
+  };
+  const onClickComplete = (index) => {
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);
+
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newCompleteTodos);
+  };
+
+  const onClickUndo = (index) => {
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);
+
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
+    setCompleteTodos(newCompleteTodos);
+    setIncompleteTodos(newIncompleteTodos);
+  };
+
   return (
     <>
       <div class="input-area">
@@ -26,12 +49,12 @@ export const App = () => {
       <div class="incomplete-area">
         <p class="title">incomplete todo</p>
         <ul>
-          {incompleteTodos.map((todo) => {
+          {incompleteTodos.map((todo, index) => {
             return (
               <div key={todo} class="list-row">
                 <li>{todo}</li>
-                <button>complete</button>
-                <button>delete</button>
+                <button onClick={() => onClickComplete(index)}>complete</button>
+                <button onClick={() => onClickDelete(index)}>delete</button>
               </div>
             );
           })}
@@ -40,11 +63,11 @@ export const App = () => {
       <div class="complete-area">
         <p class="title">complete todo</p>
         <ul>
-          {completeTodos.map((todo) => {
+          {completeTodos.map((todo, index) => {
             return (
               <div key={todo} class="list-row">
                 <li>{todo}</li>
-                <button>undo</button>
+                <button onClick={() => onClickUndo(index)}>undo</button>
               </div>
             );
           })}
